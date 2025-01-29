@@ -35,8 +35,11 @@ Cria um novo curso no banco de dados.
     Exemplo de Body:
     ```json
     {
-      "name": "Curso de Java",
-      "category": "Programação"
+      "nome": "Curso de Java",
+      "categoria": "Programação",
+      "ativo": "Sim",
+      "professor": "Daniel"
+    
     }
     ```
 
@@ -46,9 +49,10 @@ Cria um novo curso no banco de dados.
     ```json
     {
       "id": 1,
-      "name": "Curso de Java",
-      "category": "Programação",
-      "active": true,
+      "nome": "Curso de Java",
+      "categoria": "Programação",
+      "professor": "Daniel",
+      "ativo": true,
       "created_at": "2025-01-01T00:00:00",
       "updated_at": "2025-01-01T00:00:00"
     }
@@ -58,25 +62,25 @@ Cria um novo curso no banco de dados.
 
 ### 2. **GET - /cursos**
 
-Lista todos os cursos salvos no banco de dados. Também permite realizar buscas filtradas pelos campos `name` e `category`.
+Lista todos os cursos salvos no banco de dados. Também permite realizar buscas filtradas pelos campos `nome` e `categoria`.
 
 - **Requisição**: 
     - **Method**: `GET`
-    - **Endpoint**: `/cursos`
+    - **Endpoint**: `/propriedades`
     - **Query Params**: 
-        - `name` (opcional): Nome do curso para filtrar.
-        - `category` (opcional): Categoria do curso para filtrar.
+        - `nome` (opcional): Nome do curso para filtrar.
+        - `categoria` (opcional): Categoria do curso para filtrar.
 
     Exemplos de requisição:
 
     - **Busca por Nome**:
     ```http
-    GET /cursos?name=Java
+    GET /propriedades?nome=Java
     ```
 
     - **Busca por Categoria**:
     ```http
-    GET /cursos?category=Programação
+    GET /propriedades?categoria=Programação
     ```
 
 - **Resposta**: Retorna a lista de cursos encontrados, com a estrutura abaixo.
@@ -112,12 +116,12 @@ Atualiza um curso existente.
 - **Requisição**: 
     - **Method**: `PUT`
     - **Endpoint**: `/cursos/:id`
-    - **Body**: Pode incluir apenas `name` e/ou `category` para atualização. O campo `active` não pode ser atualizado aqui.
+    - **Body**: Pode incluir apenas `nome` e/ou `categoria` para atualização. O campo `ativo` não pode ser atualizado aqui.
 
     Exemplo de Body:
     ```json
     {
-      "name": "Curso de Java Avançado"
+      "nome": "Curso de Java Avançado"
     }
     ```
 
@@ -127,9 +131,9 @@ Atualiza um curso existente.
     ```json
     {
       "id": 1,
-      "name": "Curso de Java Avançado",
-      "category": "Programação",
-      "active": true,
+      "nome": "Curso de Java Avançado",
+      "categoria": "Programação",
+      "ativo": sim,
       "created_at": "2025-01-01T00:00:00",
       "updated_at": "2025-01-03T00:00:00"
     }
@@ -143,11 +147,11 @@ Remove um curso existente pelo `id`.
 
 - **Requisição**: 
     - **Method**: `DELETE`
-    - **Endpoint**: `/cursos/:id`
+    - **Endpoint**: `/deletar/:id`
 
     Exemplo de requisição:
     ```http
-    DELETE /cursos/1
+    DELETE /deletar/1
     ```
 
 - **Resposta**: Retorna um status indicando que o curso foi removido com sucesso.
@@ -167,14 +171,14 @@ Marca um curso como ativo ou inativo. Esta rota realiza um toggle entre `true` o
 
 - **Requisição**: 
     - **Method**: `PATCH`
-    - **Endpoint**: `/cursos/:id/active`
+    - **Endpoint**: `/cursos/ativoInativo/id/active`
 
     Exemplo de requisição:
     ```http
-    PATCH /cursos/1/active
+    PATCH /cursos/ativoInativo/1/active
     ```
 
-- **Resposta**: Retorna o curso com o status `active` atualizado.
+- **Resposta**: Retorna o curso com o status `ativo` atualizado.
 
     Exemplo de resposta:
     ```json
@@ -182,7 +186,7 @@ Marca um curso como ativo ou inativo. Esta rota realiza um toggle entre `true` o
       "id": 1,
       "name": "Curso de Java",
       "category": "Programação",
-      "active": false,
+      "active": "não",
       "created_at": "2025-01-01T00:00:00",
       "updated_at": "2025-01-03T00:00:00"
     }
@@ -190,19 +194,10 @@ Marca um curso como ativo ou inativo. Esta rota realiza um toggle entre `true` o
 
 ---
 
-## Tecnologias Utilizadas
-
-- **Node.js** - Ambiente de execução JavaScript.
-- **Express** - Framework para criação da API.
-- **Banco de Dados** - Pode ser SQL ou NoSQL, dependendo da implementação.
-- **Outros Pacotes** - Como `body-parser`, `cors`, etc.
 
 ## Como Rodar o Projeto
 
 ### Pré-requisitos
-
-- **Node.js** instalado na sua máquina.
-- **Banco de dados** configurado (pode ser SQL ou NoSQL, de acordo com a implementação).
 
 ### Instalação
 
@@ -218,30 +213,8 @@ Marca um curso como ativo ou inativo. Esta rota realiza um toggle entre `true` o
     cd nome-do-projeto
     ```
 
-3. Instale as dependências:
-
-    ```bash
-    npm install
-    ```
-
-4. Inicie o servidor:
-
-    ```bash
-    npm start
-    ```
-
 ### Testes
 
 Use o [Postman](https://www.postman.com/) ou ferramentas similares para testar as rotas da API conforme os exemplos fornecidos.
 
-## Contribuindo
 
-Se você deseja contribuir com melhorias para este projeto, siga os passos abaixo:
-
-1. Faça um fork deste repositório.
-2. Crie uma nova branch para suas alterações.
-3. Faça suas alterações e envie um pull request com uma descrição detalhada.
-
-## Licença
-
-Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
