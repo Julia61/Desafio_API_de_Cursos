@@ -52,7 +52,7 @@ Cria um novo curso no banco de dados.
       "nome": "Curso de Java",
       "categoria": "Programação",
       "professor": "Daniel",
-      "ativo": true,
+      "ativo": "sim",
       "created_at": "2025-01-01T00:00:00",
       "updated_at": "2025-01-01T00:00:00"
     }
@@ -92,7 +92,7 @@ Lista todos os cursos salvos no banco de dados. Também permite realizar buscas 
         "id": 1,
         "name": "Curso de Java",
         "category": "Programação",
-        "active": true,
+        "active": "sim",
         "created_at": "2025-01-01T00:00:00",
         "updated_at": "2025-01-01T00:00:00"
       },
@@ -100,7 +100,7 @@ Lista todos os cursos salvos no banco de dados. Também permite realizar buscas 
         "id": 2,
         "name": "Curso de Python",
         "category": "Programação",
-        "active": true,
+        "active": "sim",
         "created_at": "2025-01-02T00:00:00",
         "updated_at": "2025-01-02T00:00:00"
       }
@@ -133,7 +133,7 @@ Atualiza um curso existente.
       "id": 1,
       "nome": "Curso de Java Avançado",
       "categoria": "Programação",
-      "ativo": sim,
+      "ativo": "sim",
       "created_at": "2025-01-01T00:00:00",
       "updated_at": "2025-01-03T00:00:00"
     }
