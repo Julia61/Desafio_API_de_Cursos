@@ -204,13 +204,13 @@ Marca um curso como ativo ou inativo. Esta rota realiza um toggle entre `true` o
 1. Clone este repositório:
 
     ```bash
-    git clone <URL-do-repositório>
+    git clone https://github.com/Julia61/Desafio_API_de_Cursos.git
     ```
 
 2. Acesse o diretório do projeto:
 
     ```bash
-    cd nome-do-projeto
+    cd cursos_de_programacao
     ```
 
 ### Testes
