@@ -1,5 +1,6 @@
 package br.com.juliasilva.main.casoDeUso;
 
+import br.com.juliasilva.main.Excecao.CursoNaoEncontradoExcecao;
 import br.com.juliasilva.main.entidades.PropriedadesEntidade;
 import br.com.juliasilva.main.repositorio.AtivoOuInativoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,19 +17,17 @@ public class AtivoInativoServico {
     private AtivoOuInativoRepositorio ativoOuInativoRepositorio;
 
 
-    public PropriedadesEntidade atualizarAtivoInativo(UUID id, boolean verdadeiroOuFalso){
+    public PropriedadesEntidade atualizarAtivoInativo(UUID id, String ativoInativo){
         PropriedadesEntidade cursoExisti = ativoOuInativoRepositorio.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Curso não encontradoo"));
+                .orElseThrow(CursoNaoEncontradoExcecao::new);
+       if(ativoInativo.equalsIgnoreCase("sim")){
+           cursoExisti.setAtivo("Sim");
 
-
-       if(verdadeiroOuFalso){
-           cursoExisti.setAtivo(true);
-
+       } else if (ativoInativo.equalsIgnoreCase("não")) {
+           cursoExisti.setAtivo("Não");
        }
 
-       if(!verdadeiroOuFalso){
-           cursoExisti.setAtivo(false);
-       }
+
         return ativoOuInativoRepositorio.save(cursoExisti);
 
     }

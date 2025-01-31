@@ -1,5 +1,6 @@
 package br.com.juliasilva.main.casoDeUso;
 
+import br.com.juliasilva.main.Excecao.CursoNaoEncontradoExcecao;
 import br.com.juliasilva.main.entidades.PropriedadesEntidade;
 import br.com.juliasilva.main.repositorio.CursosRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class CursosServico {
 
     public PropriedadesEntidade atualizarCampos(UUID id, PropriedadesEntidade propriedadesEntidade) {
         PropriedadesEntidade cursoExistente = cursosRepositorio.findById(id)
-                .orElseThrow(() -> new RuntimeException("Curso não encontrado!"));
+                .orElseThrow(CursoNaoEncontradoExcecao::new);
 
         if(propriedadesEntidade.getNome() != null) {
             cursoExistente.setNome(propriedadesEntidade.getNome());

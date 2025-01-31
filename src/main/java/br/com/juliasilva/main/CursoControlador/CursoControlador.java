@@ -23,4 +23,6 @@ public class CursoControlador {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
+
 }

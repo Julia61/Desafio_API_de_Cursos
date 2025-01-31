@@ -16,7 +16,7 @@ public class AtivoInativoControlador {
     private AtivoInativoServico ativoInativoServico;
 
     @PatchMapping("/ativoInativo/{id}")
-    public ResponseEntity<PropriedadesEntidade> atualizar(@PathVariable UUID id, @RequestBody Boolean inativoOunao){
+    public ResponseEntity<PropriedadesEntidade> atualizar(@PathVariable UUID id, @RequestBody String inativoOunao){
 
         PropriedadesEntidade inativoAtivo = ativoInativoServico.atualizarAtivoInativo(id,inativoOunao);
 

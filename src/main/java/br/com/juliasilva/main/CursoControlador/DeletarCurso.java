@@ -20,7 +20,7 @@ public class DeletarCurso {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletar(@PathVariable UUID id){
-       deleteServico.deletando(id);
+        deleteServico.deletando(id);
         return ResponseEntity.ok("Curso deletado com sucesso!");
     }
 

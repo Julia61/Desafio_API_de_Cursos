@@ -14,14 +14,7 @@ public class CriarNovoCurso {
     private NovoCursoRepositorio novoCursoRepositorio;
 
     public PropriedadesEntidade execute(PropriedadesEntidade propriedadesEntidade) {
-        this.novoCursoRepositorio
-                .findByNomeAndCategoria(propriedadesEntidade.getNome(), propriedadesEntidade.getCategoria())
-                .ifPresent((user) -> {
-                    throw new EncontradaExcecao();
-                });
-
         return this.novoCursoRepositorio.save(propriedadesEntidade);
-
 
     }
 

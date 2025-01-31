@@ -1,5 +1,6 @@
 package br.com.juliasilva.main.casoDeUso;
 
+import br.com.juliasilva.main.Excecao.CursoNaoEncontradoExcecao;
 import br.com.juliasilva.main.entidades.PropriedadesEntidade;
 import br.com.juliasilva.main.repositorio.DeletandoRepositorio;
 import jakarta.persistence.EntityNotFoundException;
@@ -16,8 +17,7 @@ public class DeleteServico {
 
     public void deletando(UUID id) {
         PropriedadesEntidade cursoExisti = deletandoRepositorio.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Curso não encontrado!"));
-
+                .orElseThrow(CursoNaoEncontradoExcecao::new);
         deletandoRepositorio.delete(cursoExisti);
     }
 

@@ -2,9 +2,9 @@ package br.com.juliasilva.main.repositorio;
 
 import br.com.juliasilva.main.entidades.PropriedadesEntidade;
 import org.springframework.data.jpa.repository.JpaRepository;
-import java.util.List;
+
 import java.util.UUID;
 
-public interface CursosRepositorio extends JpaRepository<PropriedadesEntidade, UUID> {
+public interface ListarCursosRepositorio extends JpaRepository<PropriedadesEntidade, UUID> {
 
 }
